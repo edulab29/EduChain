@@ -9,19 +9,19 @@ import { useWallet } from '../contexts/WalletContext';
 
 export function DApp() {
   const [activeTab, setActiveTab] = useState('issue');
-  const { isConnected } = useWallet();
+  const { isWalletConnected } = useWallet();
 
   const renderContent = () => {
-    if (!isConnected) {
+    if (!isWalletConnected) {
       return (
         <div className="text-center py-12">
           <p className="text-gray-400 mb-4">Please connect your wallet to access the DApp</p>
         </div>
-      );
+      ); 
     }
 
     return (
-      <div className="bg-gray-900 rounded-xl p-6">
+      <div className="bg-gray-900 rounded-xl p-6"> 
         {activeTab === 'issue' && <IssueCredentials />}
         {activeTab === 'verify' && <VerifyCredentials />}
         {activeTab === 'manage' && <ManageCredentials />}
